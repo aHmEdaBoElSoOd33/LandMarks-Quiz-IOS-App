@@ -27,7 +27,7 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        answerResultImage.isHidden = true
         loadQuestion()
 
      
@@ -36,6 +36,7 @@ class ViewController: UIViewController{
 
     
     func loadQuestion(){
+        
         let cQustion = quiz.currantQuestion
         let choices = quiz.choice[cQustion].shuffled()
         let cImage = quiz.image[cQustion]
@@ -55,7 +56,7 @@ class ViewController: UIViewController{
     }
     
     @IBAction func answerChoice(_ sender: Any) {
-         
+        answerResultImage.isHidden = false
         if quiz.checkAnswer(answer:(sender as AnyObject).currentTitle!) {
              
             answerResultImage.image = UIImage(named: "true")
@@ -75,11 +76,12 @@ class ViewController: UIViewController{
     
     @IBAction func tryAgain(_ sender: Any) {
         
-        
+        answerResultImage.isHidden = true
         quiz.tryAgain()
         loadQuestion()
         quiz.nextQuestions()
-        
+        quiz.currantQuestion = 0
+         
     }
     
     

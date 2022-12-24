@@ -53,7 +53,7 @@ struct Quiz {
     
     
     mutating func nextQuestions (){
-       
+        
         if currantQuestion<image.count-1{
             currantQuestion += 1
         }else{
